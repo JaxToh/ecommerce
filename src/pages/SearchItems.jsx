@@ -34,13 +34,12 @@ function SearchItems({addItem}) {
       <input
       value={searchTerm}
       onChange={(e) => setSearchTerm(e.target.value)}
-      placeholder="Search for products"
-    />
+      placeholder="Search for products"/>
     <button onClick={() => fetchProducts(searchTerm)}>Search</button>
       </div>
       <h4>Products:</h4>
       {products?.length > 0 ? (
-        <ProductCard products={products} />
+        <ProductCard products={products} addItem={addItem}/>
       ) : (
         <div className="empty">
           <h2>No products found</h2>

@@ -5,7 +5,6 @@
     background-color: rgb(228, 226, 226);
     height: 20px;
     padding: 10px;
-    
 }
 
 .footer {
@@ -42,6 +41,10 @@
 h6 {
     margin-bottom: 10px;
     text-align: center;
+}
+
+button {
+    cursor: pointer;
 }
 
 .product-card {
@@ -84,4 +87,13 @@ h6 {
     display: flex;
     justify-content: center;
     margin-top: 15px;
+}
+
+.shipping {
+    margin-top: 50px;
+}
+
+.summary {
+    border: 1px solid black;
+    margin-top: 50px;
 }

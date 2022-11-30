@@ -1,13 +1,35 @@
-function Cart({ cartItems, addItem }) {
-
-    return ( //map cartItems
+function Cart({ cartItems, addItem, removeItem }) {
+  const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
+    return (
       <>
         <h2>Cart</h2>
-        <ul>
-          <li>CartItems<button>-</button><output>1</output><button>+</button></li>
-        </ul>
-        
-        <h2>Contact & Shipping Details</h2>
+        {cartItems.length === 0 && <div>Cart is empty</div>}
+        {cartItems.map((item) => (
+          <div key={item.id}>
+            <img src={item.image} width="100px" height="100px" alt={item.title}/>
+            {item.title}
+            <br />
+            ${item.price.toFixed(2)}
+            <span>
+              <button onClick={() => removeItem(item)} className="remove">
+                {item.qty !== 1 ? '-' : 'x'}
+              </button>
+               {item.qty} 
+              <button onClick={() => addItem(item)} className="add">
+                +
+              </button>
+            </span>
+          </div>
+        ))}
+        <div className="summary">
+        {cartItems.length !== 0 && (
+          <>
+          Total price: {itemsPrice.toFixed(2)}
+          </>
+        )}
+        </div>
+
+        <h2 className="shipping">Contact & Shipping Details</h2>
           <label>First Name</label><input type="text"/>
           <label>Last Name</label><input type="text"/>
           <label>Address</label><input type="text"/>
