@@ -1,8 +1,13 @@
 function Cart({ cartItems, addItem, removeItem }) {
   const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
+
+  const handleChange = () => {
+
+  }
+
     return (
       <>
-        <h2>Cart</h2>
+        <h2 className="cart-title">Cart</h2>
         {cartItems.length === 0 && <div>Cart is empty</div>}
         {cartItems.map((item) => (
           <div key={item.id}>
@@ -30,9 +35,11 @@ function Cart({ cartItems, addItem, removeItem }) {
         </div>
 
         <h2 className="shipping">Contact & Shipping Details</h2>
-          <label>First Name</label><input type="text"/>
-          <label>Last Name</label><input type="text"/>
-          <label>Address</label><input type="text"/>
+          <label>First Name: </label><input type="text" onChange={handleChange}/>
+          <br />
+          <label>Last Name: </label><input type="text" onChange={handleChange}/>
+          <br />
+          <label>Address: </label><input type="text" onChange={handleChange}/>
         <br />
         <br />
            <h6>Submit your order request and we will get back to you within 1-3 business days with order confirmation and payment modes. Thank you for your interest!</h6>

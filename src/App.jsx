@@ -2,7 +2,9 @@ import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './layouts/Layout'
 import SearchItems from './pages/SearchItems'
+import ProductDetails from './pages/ProductDetails'
 import Cart from './pages/Cart'
+import NotFound from './pages/NotFound'
 import './App.css'
 
 function App() {
@@ -38,9 +40,11 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout cartCount={cartItems.length}/>}>
+          <Route path="/" element={<Layout cartCount={cartItems.length}/ >}>
             <Route index element={<SearchItems addItem={addItem} />} />
-            <Route path="cart" element={<Cart cartItems={cartItems} addItem={addItem} removeItem={removeItem}/>} />
+            <Route path="cart" element={<Cart cartItems={cartItems} addItem={addItem} removeItem={removeItem} />} />
+            <Route path="/:id" element={<ProductDetails addItem={addItem} removeItem={removeItem} />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>
