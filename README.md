@@ -43,11 +43,20 @@ This ecommerce app has basic functionalities such as sorting products by categor
 ## Deployment
 
 The app is deployed on Vercel:
-ecommerce-h4zyf9k54-jaxtoh.vercel.app
+https://ecommerce-ecru-xi-65.vercel.app
 
 
 ## Wireframe
 <img src="/src/assets/wireframe.png" />
+
+
+## Planning and Development Process
+
+1. 
+
+2.
+
+3.
 
 
 ## Challenges & Learning Points
@@ -57,7 +66,6 @@ ecommerce-h4zyf9k54-jaxtoh.vercel.app
 2.
 
 3.
-
 
 
 ## API Used

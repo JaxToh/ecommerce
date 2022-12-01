@@ -26,7 +26,7 @@ function SearchItems({addItem}) {
 
   return (
     <>
-    <img className="hero" src="src/assets/image.jpeg" alt="image"/>
+    <img className="hero" src="https://i.imgur.com/KAk0cnY.jpg" alt="image"/>
 
       <form className="search-bar">
        <label><b>Choose a category: </b></label>
