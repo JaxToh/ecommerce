@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './layouts/Layout'
 import SearchItems from './pages/SearchItems'
@@ -15,11 +15,13 @@ function App() {
     if (inCart) {
           const newCartItems = cartItems.map((item) =>
           item.id === product.id ? { ...inCart, qty: inCart.qty + 1 } : item
-        )
+        );
         setCartItems(newCartItems);
+      localStorage.setItem('cartItems', JSON.stringify(newCartItems));
     } else {
-      const newCartItems = [...cartItems, { ...product, qty: 1 }]
+      const newCartItems = [...cartItems, { ...product, qty: 1 }];
       setCartItems(newCartItems);
+      localStorage.setItem('cartItems', JSON.stringify(newCartItems));
     }
   };
 
@@ -28,13 +30,22 @@ function App() {
     if (inCart.qty === 1) {
       const newCartItems = cartItems.filter((item) => item.id !== product.id)
       setCartItems(newCartItems);
+      localStorage.setItem('cartItems', JSON.stringify(newCartItems));
     } else {
       const newCartItems = cartItems.map((item) =>
-      item.id === product.id ? { ...inCart, qty: inCart.qty - 1 } : item
-      );
+         item.id === product.id ? { ...inCart, qty: inCart.qty - 1 } : item
+        );
       setCartItems(newCartItems);
+      localStorage.setItem('cartItems', JSON.stringify(newCartItems));
     }
   };
+  useEffect(() => {
+    setCartItems(
+      localStorage.getItem('cartItems') 
+      ? JSON.parse(localStorage.getItem('cartItems')) 
+      : []
+    );
+  },[]);
 
   return (
     <>

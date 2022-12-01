@@ -3,12 +3,12 @@ import ProductCard from '../components/ProductCard'
 
 function SearchItems({addItem}) {
   const [products, setProducts] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("electronics");
 
-  const fetchProducts = async () => {
+  const fetchProducts = async (category) => {
     try {
       const request = await fetch(
-        `https://fakestoreapi.com/products/`
+        `https://fakestoreapi.com/products/category/${category}`
       );
       if (!request.ok) {
         throw new Error("Network error");
@@ -16,32 +16,35 @@ function SearchItems({addItem}) {
       const data = await request.json();
       setProducts(data);
     } catch (error) {
-
+      console.log('error');
     }
   };
 
   useEffect(() => {
-    fetchProducts();
-  }, []);
-
+    fetchProducts(searchTerm);
+  }, [searchTerm]);
 
   return (
     <>
     <img className="hero" src="src/assets/image.jpeg" alt="image"/>
-       <div className="search-bar">
-         <input
-           value={searchTerm}
-           onChange={(e) => setSearchTerm(e.target.value)}
-           placeholder="Search for products"/>
-         <button onClick={() => fetchProducts(searchTerm)}>Search</button>
-       </div>
+
+      <form className="search-bar">
+       <label><b>Choose a category: </b></label>
+        <select value={searchTerm} onChange ={e => setSearchTerm(e.target.value)}>
+          <option value="electronics">Electronics</option>
+          <option value="jewelery">Jewellery</option>
+          <option value="men's clothing">Men's Fashion</option>
+          <option value="women's clothing">Women's Fashion</option>
+        </select>
+       </form>
+
 
     <h4>All Products:</h4>
     {products?.length > 0 ? (
         <ProductCard products={products} addItem={addItem}/>
       ) : (
         <div className="empty">
-          <h2>No products found</h2>
+          <h2>Loading...</h2>
         </div>
       )}
     </>

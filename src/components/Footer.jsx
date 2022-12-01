@@ -1,5 +1,8 @@
 export default function Footer() {
     return (
-        <h3 className="footer">Footer</h3>
+        <div className="footer">
+        <h3>My e-shop</h3>
+        <p>contact@eshop.com</p>
+        </div>
     )
 }

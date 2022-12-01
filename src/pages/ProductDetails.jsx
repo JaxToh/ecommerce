@@ -1,13 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-
-
-function ProductDetails({addItem, removeItem}) {
+function ProductDetails({addItem}) {
 
     const { id } = useParams();
     const [product, setProduct] = useState([]);
-    const [status, setStatus] = useState("idle");
 
     const handleClick = (e, product) => {
         addItem(product);
@@ -27,9 +24,8 @@ function ProductDetails({addItem, removeItem}) {
           }
           const data = await request.json();
           setProduct(data);
-          setStatus("done");
         } catch (error) {
-          setStatus("error");
+          console.log("error")
         }
       };
     
